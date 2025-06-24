@@ -1,6 +1,6 @@
 # 📧 Phishing Email Analysis – Fake ZipRecruiter Job Offer
 
-This project contains a full analysis of a **simulated phishing email** designed to mimic a job offer from ZipRecruiter. The email was analyzed as part of a cybersecurity training task to identify social engineering tactics and phishing indicators.
+This project documents the analysis of a **simulated phishing email** mimicking a job offer from ZipRecruiter. It was analyzed as part of a cybersecurity task focused on identifying phishing techniques, malware risks, and social engineering.
 
 ---
 
@@ -27,62 +27,49 @@ Analyze the phishing email to:
 
 | # | Indicator | Details |
 |--|-----------|---------|
-| 1 | 🕵️ Spoofed Domain | Sender uses `authwebmail.com`, not an official `ziprecruiter.com` domain. |
-| 2 | 🎯 Too-Good-To-Be-True Offer | Claims an unsolicited high-paying role ($275k–$325k) with vague justification. |
-| 3 | 📎 Suspicious Attachment | `.docx` file prompts user to "Enable Editing" — a common macro malware trick. |
-| 4 | ⚠️ Urgency | Pushes for immediate response (“intro call this week”) to pressure the recipient. |
-| 5 | 🧷 Broken Content | Word document contains missing images — often seen in phishing lures. |
-| 6 | 🔗 No Verifiable Links | No URLs pointing to real ZipRecruiter or PaySphere domains; no way to verify the offer. |
-| 7 | 💬 Generic Language | Mentions “LinkedIn profile” without personalization; looks automated. |
+| 1 | 🕵️ Spoofed Domain | Email sent from `authwebmail.com`, not ZipRecruiter’s domain. |
+| 2 | 🎯 Unrealistic Offer | Salary claim of $275k–$325k is unusually high and unsolicited. |
+| 3 | 📎 Malicious Attachment | `.docx` file triggers "Enable Editing" warning – used in macro malware. |
+| 4 | ⚠️ Urgency | Pushes recipient to respond quickly (“intro call this week”). |
+| 5 | 🧷 Broken Content | Word doc contains missing image links — a known phishing technique. |
+| 6 | 🔗 No Verifiable Links | No official site URLs included; cannot confirm legitimacy. |
+| 7 | 💬 Generic Language | Mentions LinkedIn with no personal detail — clearly templated. |
 
 ---
 
-## 📎 Attachment Analysis
+## 📎 Attachment Behavior
 
-**File**: `CanIPhish-Word-Attachment.docx`
-
-**Behavior**:
-- Opens in **Microsoft Word Protected View**
-- Displays: _“The linked image cannot be displayed”_
-- Prompts the user to “**Enable Editing**”
-- ⚠️ This technique is commonly used to **execute malicious macros** once editing is enabled
-
----
-
-## 🧠 Conclusion
-
-This email is a **classic phishing attempt**. It impersonates a well-known job platform, uses urgency and flattery to manipulate the recipient, and includes a suspicious attachment likely intended to deliver malware. Key red flags include:
-
-- Spoofed sender domain
-- Unrealistic salary claim
-- Pressure for quick action
-- Malicious `.docx` file with editing request
+**File**: `CanIPhish-Word-Attachment.docx`  
+**Findings**:
+- Opened in Protected View
+- Missing image references
+- Requests user to "Enable Editing"
+- ⚠️ **Scanned with VirusTotal**: Marked as **malicious and phishing**
 
 ---
 
-## 🧰 Tools Used
+## 🧰 Recommended Tools (for Real-World Analysis)
 
-- Manual email inspection
-- Microsoft Word (Protected View)
-- Email client analysis (visual, no header data)
+Although this was a **training simulation**, the following tools are recommended for analyzing real phishing emails:
 
----
+### 📬 Email Header Analysis
+- [MxToolbox Header Analyzer](https://mxtoolbox.com/EmailHeaders.aspx)
+- [Google Admin Toolbox – Message Header](https://toolbox.googleapps.com/apps/messageheader/)
 
-## 📷 Screenshots
+### 🔗 Suspicious URL Analysis
+- [VirusTotal – URL Scanner](https://www.virustotal.com/gui/home/url)
+- [URLScan.io](https://urlscan.io/)
 
-This repository includes screenshots of:
-- The email in the inbox
-- The email content
-- The opened Word document in Protected View
+### 📎 Attachment (DOCX/PDF) Analysis
+- [VirusTotal – File Scanner](https://www.virustotal.com/gui/home/upload) ✅ *Used in this case* – confirmed phishing
+- [AnyRun (interactive sandbox)](https://any.run/)
+- [Joe Sandbox](https://www.joesandbox.com/)
 
----
+### 🧰 All-in-One Platform
+- [Hybrid Analysis](https://www.hybrid-analysis.com/) – deep malware, behavior, and threat intelligence
 
-## 🛡️ Disclaimer
-
-This project is for **educational and awareness purposes only**. It simulates a phishing scenario in a controlled environment. Do not attempt to replicate or forward phishing content in real-world settings.
-
----
-
-**Author**: Ack  
-**Task**: Phishing Email Analysis (Task 2)  
-**Date**: June 2025
+### 🧪 Offline Static Analysis (Optional)
+- `oletools` → Analyze macros in `.docx`:
+  ```bash
+  pip install oletools
+  olevba CanIPhish-Word-Attachment.docx
