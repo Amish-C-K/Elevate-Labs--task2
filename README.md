@@ -23,6 +23,11 @@ Analyze the phishing email to:
 
 ---
 
+![t2-1]("https://github.com/Amish-C-K/Elevate-Labs--task2/blob/main/images/t2-1.png")
+![t2-2]("https://github.com/Amish-C-K/Elevate-Labs--task2/blob/main/images/t2-2.png")
+
+---
+
 ## 🔍 Phishing Indicators
 
 | # | Indicator | Details |
