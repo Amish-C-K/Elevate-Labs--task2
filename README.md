@@ -43,6 +43,12 @@ Analyze the phishing email to:
 
 ---
 
+## Attached Document
+
+![t2-2](https://github.com/Amish-C-K/Elevate-Labs--task2/blob/main/images/t2-3.png)
+
+---
+
 ## 📎 Attachment Behavior
 
 **File**: `CanIPhish-Word-Attachment.docx`  
@@ -51,6 +57,12 @@ Analyze the phishing email to:
 - Missing image references
 - Requests user to "Enable Editing"
 - ⚠️ **Scanned with VirusTotal**: Marked as **malicious and phishing**
+
+---
+
+## Using VirusTotal
+
+![t2-2](https://github.com/Amish-C-K/Elevate-Labs--task2/blob/main/images/t2-4.png)
 
 ---
 
